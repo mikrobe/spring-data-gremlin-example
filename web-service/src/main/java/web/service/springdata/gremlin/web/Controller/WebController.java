@@ -24,6 +24,7 @@ import web.service.springdata.gremlin.repository.MicroServiceRepository;
 import web.service.springdata.gremlin.repository.ServicesDataFlowRepository;
 import web.service.springdata.gremlin.web.domain.Greeting;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -51,19 +52,6 @@ public class WebController {
         return foundService.orElse(null);
     }
 
-    @RequestMapping(value = "/services/{id}", method = RequestMethod.DELETE)
-    public void deleteService(@PathVariable String id) {
-        this.microServiceRepo.deleteById(id);
-    }
-
-    @RequestMapping(value = "/services/", method = RequestMethod.DELETE)
-    public void deleteService(@RequestBody MicroService service) {
-        this.microServiceRepo.delete(service);
-    }
-
-    /**
-     * Create one new service instance in graph
-     */
     @RequestMapping(value = "/services/{id}", method = RequestMethod.PUT)
     public MicroService putService(@PathVariable String id, @RequestBody MicroService service) {
 
@@ -76,12 +64,28 @@ public class WebController {
         return service;
     }
 
+    @RequestMapping(value = "/services/{id}", method = RequestMethod.DELETE)
+    public void deleteService(@PathVariable String id) {
+        this.microServiceRepo.deleteById(id);
+    }
+
+    @RequestMapping(value = "/services/", method = RequestMethod.DELETE)
+    public void deleteService(@RequestBody MicroService service) {
+        this.microServiceRepo.delete(service);
+    }
+
+
     @RequestMapping(value = "/services/", method = RequestMethod.PUT)
     public MicroService putService(@RequestBody MicroService service) {
 
         this.microServiceRepo.save(service);
 
         return service;
+    }
+
+    @RequestMapping(value = "/services/", method = RequestMethod.GET)
+    public List<MicroService> getServiceList() {
+        return (List<MicroService>) this.microServiceRepo.findAll(MicroService.class);
     }
 
     @RequestMapping(value = "/services/create/{id}", method = RequestMethod.PUT)
@@ -120,5 +124,10 @@ public class WebController {
         this.dataFlowRepo.save(dataFlow);
 
         return dataFlow;
+    }
+
+    @RequestMapping(value = "/dataflow/", method = RequestMethod.GET)
+    public List<ServicesDataFlow> getServicesDataFlowList() {
+        return (List<ServicesDataFlow>) this.dataFlowRepo.findAll(ServicesDataFlow.class);
     }
 }
