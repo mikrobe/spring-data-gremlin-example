@@ -28,7 +28,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @EnableGremlinRepositories(basePackages = "web.service.springdata.gremlin.repository")
 @EnableConfigurationProperties(GremlinProperties.class)
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:application.yml")
 public class UserRepositoryConfiguration extends AbstractGremlinConfiguration {
 
     @Autowired
