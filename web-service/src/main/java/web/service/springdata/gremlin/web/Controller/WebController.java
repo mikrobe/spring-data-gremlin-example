@@ -74,6 +74,10 @@ public class WebController {
         this.microServiceRepo.delete(service);
     }
 
+    @RequestMapping(value = "/services/all", method = RequestMethod.DELETE)
+    public void deleteServicesAll() {
+        this.microServiceRepo.deleteAll();
+    }
 
     @RequestMapping(value = "/services/", method = RequestMethod.PUT)
     public MicroService putService(@RequestBody MicroService service) {

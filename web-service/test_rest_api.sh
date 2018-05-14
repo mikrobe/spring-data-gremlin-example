@@ -5,6 +5,7 @@ eureka_server='{"id":"cloud-eureka-server","port":"8761"}'
 hystrix_dashboard='{"id":"cloud-hystrix-dashboard","port":"8080"}'
 service_gateway='{"id":"cloud-gateway","port":"8888"}'
 
+curl -X DELETE http://localhost:8080/services/all
 curl -X PUT -H "Content-Type: application/json" -d $config_server http://localhost:8080/services/
 curl -X PUT -H "Content-Type: application/json" -d $eureka_server http://localhost:8080/services/
 curl -X PUT -H "Content-Type: application/json" -d $hystrix_dashboard http://localhost:8080/services/
