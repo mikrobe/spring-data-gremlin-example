@@ -21,6 +21,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Data
 @Vertex
 @AllArgsConstructor
@@ -30,6 +33,6 @@ public class MicroService {
     @Id
     private String id;
 
-    private String port;
+    private Map<String, String> properties = new HashMap<>();
 }
 

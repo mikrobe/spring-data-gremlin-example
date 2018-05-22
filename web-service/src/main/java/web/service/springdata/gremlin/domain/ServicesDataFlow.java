@@ -24,6 +24,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 @Data
 @Edge
@@ -34,12 +37,12 @@ public class ServicesDataFlow {
     @Id
     private String id;
 
-    private String name;
-
     @EdgeFrom
     private MicroService serviceFrom;
 
     @EdgeTo
     private MicroService serviceTo;
+
+    private Map<String, Object> properties = new HashMap<>();
 }
 
