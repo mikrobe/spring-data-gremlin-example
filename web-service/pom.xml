@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>spring-data-gremlin-web-service</artifactId>
-    <name>Spring Data gremlin - Example</name>
+    <name>Spring Data gremlin - Web Service</name>
 
     <parent>
         <artifactId>pli-spring-data-gremlin-examples</artifactId>
